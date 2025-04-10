@@ -1,1 +1,31 @@
-<p>input works!</p>
+<div 
+[formGroup]="formGroupDirective.form">
+  <div class="p-1">
+    <!-- input label -->
+    <h1 class="text-black text-lg">
+      {{ label }} <span class="text-red-600" *ngIf="isRequired">*</span>
+    </h1>
+  </div>
+  <div class="w-full h-full">
+    <!-- input -->
+    <input
+      class="bg-transparent text-lg border-2 p-1 border-gray-200 transition-all rounded-md focus:outline-green-700"
+      [formControlName]="controlName"
+      (keypress)="onInputChange($event.key)"
+      (paste)="onInputChange($event.clipboardData?.getData('text'))"
+      (drop)="onInputChange($event.dataTransfer?.getData('text'))"
+      [placeholder]="placeholder"
+      [type]="type"
+      [required]="isRequired"
+      [disabled]="isDisabled"
+    />
+  </div>
+  <div *ngFor="let error of errors">
+    <div
+      *ngIf="fieldError(error.type)"
+      class="flex items-center absolute bottom-0 right-0 translate-x-0 translate-y-6 animate-fadeIn"
+    >
+      <p class="text-xs text-red-600">{{ error.message }}</p>
+    </div>
+  </div>
+</div>
