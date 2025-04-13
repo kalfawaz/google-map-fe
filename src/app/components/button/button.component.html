@@ -1,1 +1,16 @@
-<p>button works!</p>
+<button
+  (click)="triggerFunc.emit()"
+  [disabled]="isDisabled"
+  class="{{
+    buttonStyle
+  }} flex justify-center items-center px-2 py-1 rounded-md transition-all disabled:border-disable-shade-2 disabled:text-disable-shade-3 disabled:bg-disable-shade-1 disabled:cursor-not-allowed active:scale-90"
+>
+  <!-- <img
+    *ngIf="icon"
+    class="{{ imgStyle }}"
+    [ngClass]="{ 'opacity-10': isDisabled }"
+    [src]="icon"
+    alt="button"
+  /> -->
+  <p>{{ label }}</p>
+</button>
